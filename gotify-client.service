@@ -3,7 +3,7 @@ Description=Gotify Desktop Client
 After=network.target graphical-session.target
 
 [Service]
-ExecStart=/usr/bin/python3 /home/migbert/proyectos/gotify-client/main.py
+ExecStart=/usr/bin/python3 /home/migbert/proyectos/gotify-client/gui.py
 Restart=always
 RestartSec=10
 Environment=DISPLAY=:0

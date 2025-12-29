@@ -5,7 +5,7 @@ import QtQuick.Controls.Material 2.15
 
 ApplicationWindow {
     id: window
-    visible: true
+    visible: false
     width: 400
     height: 600
     title: "Gotify Client"

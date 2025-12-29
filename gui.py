@@ -1,4 +1,5 @@
 import sys
+import argparse
 import datetime
 from PyQt6.QtWidgets import QApplication, QSystemTrayIcon, QMenu
 from PyQt6.QtGui import QIcon, QAction
@@ -105,7 +106,7 @@ class Backend(QObject):
             self.tray_callback(title, message)
 
 class GotifyApplication(QApplication):
-    def __init__(self, argv):
+    def __init__(self, argv, start_minimized=False):
         super().__init__(argv)
         self.setQuitOnLastWindowClosed(False)
         
@@ -132,6 +133,11 @@ class GotifyApplication(QApplication):
         
         # System Tray
         self.setup_tray()
+
+        if start_minimized:
+             self.tray_icon.showMessage("Gotify Client", "Application started minimized to tray", QSystemTrayIcon.MessageIcon.Information, 2000)
+        else:
+            self.main_window.show()
 
     def on_minimize_requested(self):
         self.main_window.hide()
@@ -183,5 +189,10 @@ class GotifyApplication(QApplication):
         self.quit()
 
 if __name__ == "__main__":
-    app = GotifyApplication(sys.argv)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--minimized", "-m", action="store_true", help="Start application minimized to tray")
+    args, unknown = parser.parse_known_args()
+
+    # Pass original argv to Qt, but we operate on our args
+    app = GotifyApplication(sys.argv, start_minimized=args.minimized)
     sys.exit(app.exec())

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Gotify Client
 Comment=Desktop Client for Gotify Notifications
-Exec=/usr/bin/python3 /home/migbert/proyectos/gotify-client/main.py
+Exec=/usr/bin/python3 /home/migbert/proyectos/gotify-client/gui.py
 Icon=/home/migbert/proyectos/gotify-client/gotify.png
 Terminal=false
 Type=Application

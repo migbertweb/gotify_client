@@ -1,0 +1,14 @@
+[Unit]
+Description=Gotify Desktop Client
+After=network.target graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/migbert/proyectos/gotify-client/main.py
+Restart=always
+RestartSec=10
+Environment=DISPLAY=:0
+Environment=PYTHONUNBUFFERED=1
+WorkingDirectory=/home/migbert/proyectos/gotify-client
+
+[Install]
+WantedBy=default.target
